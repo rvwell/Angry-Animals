@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Angry Animals"
 run/main_scene="uid://cqdgpc8056xfb"
-config/features=PackedStringArray("4.4", "Mobile")
+config/features=PackedStringArray("4.4", "C#", "Mobile")
 config/icon="uid://r8b2rgx8o0l5"
 
 [display]
