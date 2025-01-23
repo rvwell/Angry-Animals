@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://cqdgpc8056xfb"]
+[gd_scene load_steps=3 format=3 uid="uid://cqdgpc8056xfb"]
+
+[ext_resource type="Texture2D" uid="uid://bilne1jpetbw2" path="res://assets/scene/colored_castle.png" id="1_vbawi"]
+[ext_resource type="PackedScene" uid="uid://b0nwmqu60n8kt" path="res://Scenes/Animal/Animal.tscn" id="2_3hkb6"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(586, 375)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_vbawi")
+
+[node name="Animal" parent="." instance=ExtResource("2_3hkb6")]
+position = Vector2(126, 502)
