@@ -1,14 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqdgpc8056xfb"]
+[gd_scene load_steps=5 format=3 uid="uid://cqdgpc8056xfb"]
 
+[ext_resource type="Script" uid="uid://bt3ttavpxvalq" path="res://Scenes/Level/Level.cs" id="1_4dwx7"]
 [ext_resource type="Texture2D" uid="uid://bilne1jpetbw2" path="res://assets/scene/colored_castle.png" id="1_vbawi"]
 [ext_resource type="PackedScene" uid="uid://b0nwmqu60n8kt" path="res://Scenes/Animal/Animal.tscn" id="2_3hkb6"]
+[ext_resource type="PackedScene" uid="uid://bmi01asv0weoc" path="res://Scenes/Water/Water.tscn" id="3_4dwx7"]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("_animalStart")]
+script = ExtResource("1_4dwx7")
+_animalStart = NodePath("AnimalStart")
+_animalScene = ExtResource("2_3hkb6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(586, 375)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("1_vbawi")
 
-[node name="Animal" parent="." instance=ExtResource("2_3hkb6")]
-position = Vector2(126, 502)
+[node name="Water" parent="." instance=ExtResource("3_4dwx7")]
+z_index = 1
+position = Vector2(3, 633)
+
+[node name="AnimalStart" type="Marker2D" parent="."]
+position = Vector2(144, 443)
