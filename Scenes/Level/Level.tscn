@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqdgpc8056xfb"]
+[gd_scene load_steps=6 format=3 uid="uid://cqdgpc8056xfb"]
 
 [ext_resource type="Script" uid="uid://bt3ttavpxvalq" path="res://Scenes/Level/Level.cs" id="1_4dwx7"]
 [ext_resource type="Texture2D" uid="uid://bilne1jpetbw2" path="res://assets/scene/colored_castle.png" id="1_vbawi"]
 [ext_resource type="PackedScene" uid="uid://b0nwmqu60n8kt" path="res://Scenes/Animal/Animal.tscn" id="2_3hkb6"]
 [ext_resource type="PackedScene" uid="uid://bmi01asv0weoc" path="res://Scenes/Water/Water.tscn" id="3_4dwx7"]
+[ext_resource type="PackedScene" uid="uid://vkk6eihii10s" path="res://Scenes/Cup/Cup.tscn" id="5_k2uda"]
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("_animalStart")]
 script = ExtResource("1_4dwx7")
@@ -21,3 +22,12 @@ position = Vector2(3, 633)
 
 [node name="AnimalStart" type="Marker2D" parent="."]
 position = Vector2(144, 443)
+
+[node name="Cup" parent="." instance=ExtResource("5_k2uda")]
+position = Vector2(280, 497)
+
+[node name="Cup2" parent="." instance=ExtResource("5_k2uda")]
+position = Vector2(607, 440)
+
+[node name="Cup3" parent="." instance=ExtResource("5_k2uda")]
+position = Vector2(455, 357)

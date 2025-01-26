@@ -25,6 +25,7 @@ public partial class Animal : RigidBody2D
 	private Vector2 _dragStart = Vector2.Zero;
 	private Vector2 _draggedVector = Vector2.Zero;
 	private Vector2 _lastDraggedVector = Vector2.Zero;
+	private int _lastCollisionCount = 0;
 	
 	private void ConnectSignals()
 	{
@@ -130,6 +131,22 @@ public partial class Animal : RigidBody2D
 		UpdateArrowScale();
 	}
 
+	private void PlayKickSoundOnCollision()
+	{
+		
+		if(_lastCollisionCount == 0 && GetContactCount() > 0 && !_kickSound.Playing)
+		{
+			_kickSound.Play();
+		}
+
+		_lastCollisionCount = GetContactCount();
+	}
+
+	private void HandleFlight()
+	{
+		PlayKickSoundOnCollision();
+	}
+
 	private void UpdateState()
 	{
 		switch (_state)
@@ -138,6 +155,7 @@ public partial class Animal : RigidBody2D
 				HandleDragging();
 				break;
 			case AnimalState.RELEASE:
+				HandleFlight();
 				break;
 		}
 	}
@@ -158,7 +176,18 @@ public partial class Animal : RigidBody2D
 	
 	private void OnSleepingStateChanged()
 	{
-		
+		if (Sleeping)
+		{
+			foreach (Node2D body in GetCollidingBodies())
+			{
+				if (body is Cup cup)
+				{
+					cup.Die();
+				}
+			}
+
+			CallDeferred("Die");
+		}
 	}
 
 
